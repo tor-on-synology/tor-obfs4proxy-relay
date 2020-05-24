@@ -7,7 +7,7 @@ RUN apk update \
  && rm /var/cache/apk/*
 
 EXPOSE 9111
-EXPOSE 
+EXPOSE 9222
 
 ADD ./torrc /etc/tor/torrc
 
