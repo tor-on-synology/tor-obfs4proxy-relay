@@ -5,14 +5,9 @@ ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy -enableLogging
 ServerTransportListenAddr obfs4 0.0.0.0:9222
 Log notice file /opt/var/log/tor/notices.log
 DataDirectory /opt/var/lib/tor
-HiddenServiceDir /opt/var/lib/tor/hidden_service/
-HiddenServiceVersion 3
-HiddenServicePort 80 127.0.0.1:81
 ContactInfo none
 Nickname ChangeMe
 SOCKSPort 0
-ControlPort 9051
-CookieAuthentication 1
 BandwidthRate 4 MBits
 MaxAdvertisedBandwidth 4 MBits
 BandwidthBurst 6 MBits
