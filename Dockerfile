@@ -6,8 +6,7 @@ RUN apk update \
  && apk add obfs4proxy --update-cache --repository http://dl-4.alpinelinux.org/alpine/edge/testing/ --allow-untrusted \
  && rm /var/cache/apk/*
 
-EXPOSE 9111
-EXPOSE 9222
+EXPOSE 9111 9222
 
 ADD ./torrc /etc/tor/torrc
 
