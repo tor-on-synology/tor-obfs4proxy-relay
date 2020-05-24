@@ -1,24 +1,24 @@
-## The directory for keeping all the keys/etc
-DataDirectory /var/lib/tor
-
-## Tor opens a socks proxy on port 9150
-SocksPort 0.0.0.0:9150
-
-## Entry policies to allow/deny SOCKS requests based on IP address.
-## SocksPolicy accept 192.168.1.0/24
-SocksPolicy accept 172.17.0.0/16
-SocksPolicy reject *
-
-## Logs go to stdout at level "notice"
-Log notice stdout
-
+BridgeRelay 1
+ORPort 9111
+ExtORPort auto
+ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy -enableLogging
+ServerTransportListenAddr obfs4 0.0.0.0:9222
+Log notice file /opt/var/log/tor/notices.log
+DataDirectory /opt/var/lib/tor
+HiddenServiceDir /opt/var/lib/tor/hidden_service/
+HiddenServiceVersion 3
+HiddenServicePort 80 127.0.0.1:81
+ContactInfo none
+Nickname ChangeMe
+SOCKSPort 0
 ControlPort 9051
-
-# Try for at most NUM seconds when building circuits. If the circuit isn't open in that time, give up on it. (Default: 1 minute.)           
-CircuitBuildTimeout 5                                                                                                                       
-# Send a padding cell every N seconds to keep firewalls from closing our connections while Tor is not in use.                               
-KeepalivePeriod 60                                                                                                                          
-# Force Tor to consider whether to build a new circuit every NUM seconds.                                                                   
-NewCircuitPeriod 15                                                                                                                       
-# How many entry guards should we keep at a time?                                                                                           
-NumEntryGuards 8  
+CookieAuthentication 1
+BandwidthRate 4 MBits
+MaxAdvertisedBandwidth 4 MBits
+BandwidthBurst 6 MBits
+RelayBandwidthRate 4 MBits
+RelayBandwidthBurst 6 MBits
+ExitPolicy reject *:*
+ExitPolicy reject6 *:*
+ExitRelay 0
+PublishServerDescriptor bridge
